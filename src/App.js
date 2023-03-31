@@ -1,14 +1,26 @@
-import logo from './logo.svg';
+import logo from './assets/logo.svg';
 import './App.css';
+import { Button } from 'react-bootstrap';
+import { useState } from 'react';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleClick = () => setIsLoading(true);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Bienvenidos a la aplicación de Isabela.
         </p>
+        <Button
+          disabled={isLoading}
+          onClick={!isLoading ? handleClick : null}
+        >
+          {isLoading ? 'Loading' : 'Mi botón'}
+        </Button>
         <a
           className="App-link"
           href="https://reactjs.org"
